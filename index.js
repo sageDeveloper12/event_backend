@@ -3,10 +3,10 @@ const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
 const cors = require('cors');
-
+const port = port = process.env.PORT || 5000
 const app = express();
-const PORT  = process.env.PORT || 5000;
-const PASSWORD = 'your-secret-password'; // Change this to your desired password
+
+const PASSWORD = 'segun&tomi'; 
 
 app.use(cors({
   origin: 'http://localhost:5173', // Replace with your frontend URL
@@ -55,7 +55,7 @@ app.delete('/media/:filename', express.json(), (req, res) => {
   const filename = req.params.filename;
   const filePath = path.join(__dirname, 'uploads', filename);
 
-  if (password !== "segun&tomi") {
+  if (password !== PASSWORD) {
     return res.status(403).json({ error: 'Forbidden' });
   }
 
